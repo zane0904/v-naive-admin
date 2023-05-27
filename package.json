@@ -8,15 +8,23 @@
     "preview": "vite preview",
     "build-only": "vite build",
     "type-check": "vue-tsc --noEmit -p tsconfig.app.json --composite false",
+    "prepare": "husky install",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
-    "format": "prettier --write src/"
+    "format": "prettier --write src/",
+    "eslint:no-fix": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts  --ignore-path .gitignore",
+    "lint:format": "prettier --write  \"src/**/*.{ts,tsx,js,jsx,json,tsx,css,less,scss,vue,html,md}\"",
+    "lint:stylelint": "stylelint --cache --fix \"**/*.{vue,less,postcss,css,scss}\" --cache --cache-location node_modules/.cache/stylelint/",
+    "lint-staged": "lint-staged -c ./.husky/.lintstagedrc.js"
   },
   "dependencies": {
+    "cz-customizable": "^7.0.0",
     "pinia": "^2.0.36",
     "vue": "^3.3.2",
     "vue-router": "^4.2.0"
   },
   "devDependencies": {
+    "@commitlint/cli": "^17.6.3",
+    "@commitlint/config-conventional": "^17.6.3",
     "@rushstack/eslint-patch": "^1.2.0",
     "@tsconfig/node18": "^2.0.1",
     "@types/node": "^18.16.8",
@@ -25,12 +33,25 @@
     "@vue/eslint-config-prettier": "^7.1.0",
     "@vue/eslint-config-typescript": "^11.0.3",
     "@vue/tsconfig": "^0.4.0",
+    "autoprefixer": "^10.4.14",
+    "cz-git": "^1.6.1",
     "eslint": "^8.39.0",
+    "eslint-define-config": "^1.20.0",
+    "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-vue": "^9.11.0",
+    "husky": ">=7",
+    "lint-staged": "^12.3.6",
+    "naive-ui": "^2.34.4",
     "npm-run-all": "^4.1.5",
+    "postcss": "^8.4.23",
     "prettier": "^2.8.8",
     "typescript": "~5.0.4",
     "vite": "^4.3.5",
     "vue-tsc": "^1.6.4"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-git"
+    }
   }
 }

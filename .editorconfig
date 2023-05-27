@@ -1,0 +1,19 @@
+# EditorConfig is awesome: https://EditorConfig.org
+
+# 根据项目和编码风格设置适当的值
+
+# 通用配置
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+indent_size = 2
+indent_style = space
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+# 特定文件类型的配置
+[*.md]
+trim_trailing_whitespace = false
+
