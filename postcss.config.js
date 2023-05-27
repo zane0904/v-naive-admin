@@ -17,10 +17,9 @@ module.exports = {
           'last 10 versions' // 所有主流浏览器最近10版本用
         ],
         grid: true
-      }
+      },
+      tailwindcss: {}
     }),
-    require('postcss-nesting'),
-    require('postcss-preset-env'),
-    require('autoprefixer')
+    require('postcss-preset-env')
   ]
 }
