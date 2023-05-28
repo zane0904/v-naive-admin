@@ -20,7 +20,8 @@ module.exports = {
         'revert',
         'style',
         'test',
-        'deps'
+        'deps',
+        'assets'
       ]
     ]
   },
@@ -70,7 +71,16 @@ module.exports = {
         name: 'chore:    其他修改 🔨 Other changes that do not modify src or test files'
       }
     ],
-    typesAppend: [{ value: 'deps', name: 'deps:     项目依赖 🔗 Configure to package.json' }],
+    typesAppend: [
+      {
+        value: 'deps',
+        name: 'deps:     项目依赖 🔗 Configure to package.json'
+      },
+      {
+        value: 'assets',
+        name: 'assets:   新增资源 🗂️ New Resources '
+      }
+    ],
     useEmoji: true,
     emojiAlign: 'center',
     useAI: false,
