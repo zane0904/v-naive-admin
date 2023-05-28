@@ -3,11 +3,7 @@
   "include": [
     "src/**/*.ts",
     "src/**/*.d.ts",
-    "src/**/*.tsx",
-    "src/**/*.vue",
     "src/**/*.js",
-    "src/**/*.ts",
-    "src/**/*.d.ts",
     "src/**/*.tsx",
     "src/**/*.d.tsx",
     "src/**/*.vue",
@@ -25,7 +21,7 @@
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "skipLibCheck": true,
     "sourceMap": true,
-    "types": ["vite/client", "node"],
+    "types": ["vite/client", "naive-ui/volar", "node"],
     "typeRoots": ["./node_modules/@types"],
     "outDir": "./dist",
 
@@ -36,6 +32,7 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "preserve",
+    "jsxFactory": "React.createElement",
 
     /* Linting */
     "strict": true,

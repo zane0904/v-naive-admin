@@ -2,7 +2,7 @@
   <div>Form</div>
 </template>
 
-<script>
+<script lang="ts">
 export default {
   setup() {
     const state = reactive({

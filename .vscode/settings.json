@@ -90,6 +90,5 @@
     "vfonts",
     "vicons",
     "vueuse"
-  ],
-  "liveServer.settings.port": 5501
+  ]
 }

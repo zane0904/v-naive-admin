@@ -33,7 +33,8 @@ export const createPlugin = (viteEnv: ViteEnv, isBuild: boolean, _command: strin
   // title  vite-plugin-html
   vitePlugins.push(html(VITE_APP_TITLE) as unknown as Plugin)
   // vite-plugin-mock
-  vitePlugins.push(mock(VITE_APP_MOCK))
+  // eslint-disable-next-line no-unused-expressions
+  VITE_APP_MOCK && vitePlugins.push(mock(VITE_APP_MOCK))
   // restart vite-plugin-restart
   // vitePlugins.push(restart())
   // jsx插件

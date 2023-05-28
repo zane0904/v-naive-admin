@@ -28,6 +28,7 @@ module.exports = defineConfig({
     '@vue/eslint-config-typescript',
     '@vue/eslint-config-prettier/skip-formatting',
     'prettier', // →
+    './.eslintrc-auto-import.json',
     'plugin:prettier/recommended', // 使 ESLint 规则与 Prettier 格式化规则保持一致
     '@vue/eslint-config-prettier' //Vue 官方提供的一个 ESLint 配置，与 Prettier 格式化工具集成，确保 ESLint 规则与 Prettier 格式化规则的一致性。
   ],
@@ -219,7 +220,7 @@ module.exports = defineConfig({
     'no-throw-literal': 2, //禁止抛出字面量错误 throw "error";
     'no-undef': 0, //不能有未定义的变量(ts eslint里有校验了，原来的关掉)
     'no-unexpected-multiline': 2, //避免多行表达式
-    'no-underscore-dangle': 1, //标识符不能以_开头或结尾
+    'no-underscore-dangle': ['error', { allow: ['__APP_INFO__'] }], //标识符不能以_开头或结尾，排除__APP_INFO__
     'no-unneeded-ternary': 2, //禁止不必要的嵌套 var isYes = answer === 1 ? true : false;
     'no-unreachable': 2, //不能有无法执行的代码
     'no-unused-expressions': 2, //禁止无用的表达式

@@ -8,11 +8,11 @@
 <script setup lang="ts" name="UserNameLogin">
 import { userRules } from '../config'
 import { userNameLogin } from '../hooks/loginFn'
-import { IUserNameLogin } from '../type'
+import { type IUserNameLogin } from '../type'
 import UserName from './userName.vue'
 import PassWord from './passWord.vue'
 import PictureCode from './pictureCode.vue'
-import { Fn } from '@vueuse/core'
+import { type Fn } from '@vueuse/core'
 const formValue: IUserNameLogin = reactive({
   userName: 'Admin',
   password: 'A123456',
