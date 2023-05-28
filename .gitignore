@@ -25,4 +25,9 @@ coverage
 *.njsproj
 *.sln
 *.sw?
+# file
+auto-import.d.ts
+components.d.ts
+naive.d.ts
+stats.html
 .eslintcache
