@@ -52,7 +52,7 @@ export default defineConfig(({ command, mode }) => {
         'vue',
         'vue-router',
         'pinia',
-        'pinia-plugin-persist',
+        'pinia-plugin-persistedstate',
         'axios',
         'naive-ui',
         'nprogress',

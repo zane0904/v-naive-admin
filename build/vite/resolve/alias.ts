@@ -4,7 +4,7 @@ export const aliasList = [
   ['@styles', 'src/styles'],
   ['@components', 'src/components'],
   ['@views', 'src/views'],
-  ['@pinia', 'src/pinia'],
+  ['@stores', 'src/stores'],
   ['@api', 'src/api'],
   ['@utils', 'src/utils'],
   ['@type', 'src/type'],
