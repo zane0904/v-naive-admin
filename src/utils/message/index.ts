@@ -1,7 +1,7 @@
-import { MessageOptions, DialogOptions, NotificationOptions } from 'naive-ui'
-import { DialogApiInjection } from 'naive-ui/es/dialog/src/DialogProvider'
-import { MessageApiInjection } from 'naive-ui/es/message/src/MessageProvider'
-import { NotificationApiInjection } from 'naive-ui/es/notification/src/NotificationProvider'
+import { type MessageOptions, type DialogOptions, type NotificationOptions } from 'naive-ui'
+import { type DialogApiInjection } from 'naive-ui/es/dialog/src/DialogProvider'
+import { type MessageApiInjection } from 'naive-ui/es/message/src/MessageProvider'
+import { type NotificationApiInjection } from 'naive-ui/es/notification/src/NotificationProvider'
 export const useMessage = (): MessageApiInjection => window.$message
 export const useDialog = (): DialogApiInjection => window.$useDialog
 export const useNotification = (): NotificationApiInjection => window.$useNotification

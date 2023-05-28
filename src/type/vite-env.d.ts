@@ -1,3 +1,5 @@
+/// <reference types="vite/client" />
+
 declare interface ViteEnv {
   readonly VITE_APP_TITLE: string
   readonly VITE_APP_PORT: number

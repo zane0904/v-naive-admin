@@ -1,90 +1,66 @@
-<script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import { themeStore } from '@stores/modules/theme'
-import {} from '@stores/modules/user'
-
-const { siderWidth } = storeToRefs(themeStore())
-console.log(siderWidth.value)
-
-setTimeout(() => {
-  siderWidth.value++
-}, 1000)
-</script>
-
 <template>
-  <header>
-    <div class="wrapper">
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-        <h1>---{{ siderWidth }}</h1>
-      </nav>
-    </div>
-  </header>
-
-  <RouterView />
+  <NConfigProvider
+    class="flex flex-1 animate__animated animate__bounceInDown w-1/1 h-1/1"
+    :theme="store.theme ? darkTheme : null"
+    :cls-prefix="confStore.prefix"
+    :theme-overrides="themeOverride"
+    :locale="getI18n().locale"
+    :date-locale="getI18n().date"
+    :breakpoints="{ xs: 0, s: 640, m: 1024, l: 1280, xl: 1536, xxl: 1920 }"
+    :data-theme="store.theme ? 'dark' : 'light'"
+  >
+    <NGlobalStyle />
+    <NMessageProvider>
+      <NDialogProvider>
+        <NNotificationProvider>
+          <router-view />
+          <WindowUtils />
+        </NNotificationProvider>
+      </NDialogProvider>
+    </NMessageProvider>
+  </NConfigProvider>
 </template>
-
-<style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
+<script lang="ts" setup>
+import { darkTheme } from 'naive-ui'
+import { themeStore } from '@stores/modules/theme'
+import { configStore } from '@stores/modules/config'
+import { themeOverrides } from '@/naive'
+import { zhCN, dateZhCN, enUS, dateEnUS, ruRU, dateRuRU, zhTW, dateZhTW } from 'naive-ui'
+import { Locale } from './enum/locale'
+const store = themeStore()
+const confStore = configStore()
+const getI18n = () => {
+  switch (store.language) {
+    case Locale.RU:
+      return {
+        locale: ruRU,
+        date: dateRuRU
+      }
+    case Locale.EN:
+      return {
+        locale: enUS,
+        date: dateEnUS
+      }
+    case Locale.ZH_TW:
+      return {
+        locale: zhTW,
+        date: dateZhTW
+      }
+    default:
+      return {
+        locale: zhCN,
+        date: dateZhCN
+      }
+  }
 }
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-nav {
+const themeOverride = computed(() => {
+  return themeOverrides()
+})
+</script>
+<style lang="less">
+@prefixCls: ~'@{prefix}';
+.@{prefixCls}-config-provider {
   width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
+  height: 100%;
 }
 </style>

@@ -1,0 +1,27 @@
+.@{prefixCls}-menu {
+  &-item:first-child {
+    margin-top: 0 !important;
+  }
+  .@{prefixCls}-menu-item-content::before {
+    left: 0;
+    right: 0;
+  }
+
+  &--horizontal {
+    width: 100%;
+    flex: 1;
+  }
+
+  &--collapsed {
+    .@{prefixCls}-menu-item-content--selected::after,
+    .@{prefixCls}-menu-item-content--child-active::after {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 3px;
+      height: 100%;
+      content: '';
+      background-color: #0960bd;
+    }
+  }
+}
