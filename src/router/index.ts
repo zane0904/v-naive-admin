@@ -1,23 +1,26 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-
-const router = createRouter({
+import { userProfileStore } from '@stores/modules/user'
+import { type App } from 'vue'
+import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router'
+import { staticRoutes } from './routes/basic'
+import { afterEach } from './utils/afterEach'
+import { beforeEach } from './utils/beforeEach'
+import { mountNewData, mountRouter } from './utils/mountRouter'
+export const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  routes: [
-    {
-      path: '/',
-      name: 'home',
-      component: HomeView
-    },
-    {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue')
-    }
-  ]
+  routes: staticRoutes as RouteRecordRaw[],
+  scrollBehavior: () => ({ left: 0, top: 0 }),
+  strict: true
 })
-
-export default router
+export async function setRoute(app: App<Element>) {
+  const { token } = storeToRefs(userProfileStore())
+  if (unref(token)) {
+    mountRouter()
+  }
+  app.use(router)
+  if (unref(token)) {
+    mountNewData()
+  }
+}
+router.beforeEach(async (to, from, next) => beforeEach(to, from, next))
+// 切换完成
+router.afterEach(() => afterEach())
