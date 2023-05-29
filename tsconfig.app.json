@@ -10,9 +10,11 @@
     "build/**/*.ts",
     "build/**/*.d.ts",
     "mock/**/*.ts",
-    "vite.config.ts"
+    "vite.config.ts",
+    "./package.json",
+    "./public/icon.json"
   ],
-  "files": ["./package.json"],
+  "files": [],
   "exclude": ["src/**/__tests__/*"],
   "compilerOptions": {
     "target": "ES2020",

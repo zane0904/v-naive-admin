@@ -28,12 +28,12 @@
 </template>
 
 <script lang="ts" setup>
-import { FormInst, FormRules } from 'naive-ui'
-import { IDictTypeAdd, IDictTypeList } from '../type'
+import { type FormInst, type FormRules } from 'naive-ui'
+import { type IDictTypeAdd, type IDictTypeList } from '../type'
 import { useHttp } from '@/hooks/useHttp'
 import { APiSystem } from '@/api/Api'
 import { createNotification } from '@/utils/message'
-import { Method } from 'axios'
+import { type Method } from 'axios'
 const loading = ref<boolean>(false)
 const rules: FormRules = {
   key: {

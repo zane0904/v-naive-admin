@@ -1,5 +1,5 @@
 <template>
-  <div class="mt-12px mr-12px">
+  <div class="mt-[12px] mr-[12px]">
     <NSwitch v-model:value="theme" size="large" :rail-style="railStyle" :rubber-band="false">
       <template v-slot:checked>
         <Icon name="Sunny-qing-baitian" />
@@ -12,7 +12,7 @@
 </template>
 <script lang="ts" setup>
 import { themeStore } from '@stores/modules/theme'
-import { CSSProperties } from 'vue'
+import { type CSSProperties } from 'vue'
 const { theme } = storeToRefs(themeStore())
 const railStyle = ({ focused, checked }: { focused: boolean; checked: boolean }) => {
   const style: CSSProperties = {}

@@ -1,13 +1,19 @@
 <script lang="tsx">
 import { defineComponent, watch } from 'vue'
-import { RouteRecordRaw, useRoute, LocationQueryRaw, RouteParamsRaw, RouterLink } from 'vue-router'
+import {
+  type RouteRecordRaw,
+  useRoute,
+  type LocationQueryRaw,
+  type RouteParamsRaw,
+  RouterLink
+} from 'vue-router'
 import { themeStore } from '@stores/modules/theme'
 import { routeStore } from '@stores/modules/routeStore'
 import { colorFFF } from '@/config'
 import { refStore } from '@stores/modules/ref'
 import Icon from '@/components/Icon/index.vue'
-import { MenuOption } from 'naive-ui'
-import { MenuMixedOption } from 'naive-ui/lib/menu/src/interface'
+import { type MenuOption } from 'naive-ui'
+import { type MenuMixedOption } from 'naive-ui/lib/menu/src/interface'
 import { useI18n } from '@/locales/useLocal'
 import { isI18n } from '@/config'
 import { h } from 'vue'
@@ -74,7 +80,8 @@ export default defineComponent({
           const info: MenuOption = {
             label: () => label(item),
             key: item.path,
-            icon: () => (!sublevel ? <Icon name={item.meta!.icon} size={18}></Icon> : <span></span>)
+            icon: () =>
+              !sublevel ? <Icon name={item.meta!.icon!} size={18}></Icon> : <span></span>
           }
           if (item.children) {
             const list = useData(item.children)

@@ -1,25 +1,23 @@
 <template>
   <div class="flex w-full login">
-    <div class="flex flex-col w-1/2 bg py-[50px]">
+    <div class="flex flex-col w-1/2 bg py-[50px] justify-center">
       <div
-        class="flex justify-center leftHeaderText animate__animated animate__bounceInLeft h-2/5"
-      ></div>
-      <div
-        class="flex flex-col items-center justify-center leftLogo animate__animated animate__bounceInLeft w-86/100"
+        class="flex flex-col items-center justify-center animate__animated animate__bounceInLeft"
       >
         <img :src="loginBoxBg" alt="" srcset="" class="w-[368px] h-[190px]" />
         <br />
         <br />
         <p class="flex items-center m-0 text-white text-size-24px">
-          <SvgIcon name="logo-icon" class="relative top-6px mr-[20px] text-[50px]" />
+          <!-- text-[50px] -->
+          <SvgIcon :size="50" name="logo-icon" class="relative top-6px mr-[20px]" />
           <b class="mt-[10px]">开箱即用的中后台管理系统</b>
         </p>
         <div class="text-white mt-10px">当前版本：{{ pkg.version }}</div>
       </div>
     </div>
     <div class="flex flex-col flex-1 LoginFormBox animate__animated animate__bounceInRight">
-      <div class="w-7/10 h-1/3"></div>
-      <div class="box w-400px h-2/5 ml-[50px]">
+      <div class="w-3/5 h-1/3"></div>
+      <div class="box w-[400px] h-2/5 ml-[50px]">
         <h1 class="mb-12px text-size-30px"></h1>
         <User />
       </div>

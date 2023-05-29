@@ -9,7 +9,7 @@ export default defineComponent({
       <>
         <Icon
           name="setting2"
-          class={'mr-10px cursor-pointer'}
+          class={'mr-[10px] cursor-pointer'}
           onClick={() => (openSettingDrawer.value = true)}
         />
       </>

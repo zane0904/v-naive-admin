@@ -22,7 +22,7 @@ export default defineComponent({
     })
     watch(data, () => emit('update:picId', unref(data).picId))
     onMounted(async () => {
-      // await run()
+      await run()
     })
     expose({ run })
     return () => (

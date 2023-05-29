@@ -10,7 +10,7 @@ export default defineComponent({
     const { setLocal } = useI18n()
     return () => (
       <>
-        <div class={'mr-14px h-1/1 flex justify-center items-center cursor-pointer'}>
+        <div class={'mr-[14px] h-full flex justify-center items-center cursor-pointer'}>
           <NDropdown
             trigger="click"
             v-model:value={store.language}

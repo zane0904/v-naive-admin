@@ -1,10 +1,4 @@
-<template>
-  <svg :class="svgClass" aria-hidden="true">
-    <use :href="symbolId" />
-  </svg>
-</template>
-
-<script lang="ts">
+<script lang="tsx">
 export default defineComponent({
   name: 'SvgIcon',
   props: {
@@ -26,11 +20,12 @@ export default defineComponent({
   },
   setup(props) {
     const symbolId = computed(() => `#${props.prefix}-${props.name}`)
-    const svgClass = computed(() => `svg-icon ${props.className}`)
-    if (props.size) {
-      console.warn('tailwindcss 无法动态生成变量 在外层标签设置 text-xx即可')
-    }
-    return { symbolId, svgClass }
+    const svgClass = computed(() => `svg-icon ${props.className} text-[${props.size}px]`)
+    return () => (
+      <svg class={svgClass.value} aria-hidden="true">
+        <use href={symbolId.value} />
+      </svg>
+    )
   }
 })
 </script>

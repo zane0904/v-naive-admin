@@ -1,10 +1,4 @@
-<template>
-  <svg aria-hidden="true" :class="`icon text-${size}px`">
-    <use :xlink:href="symbolId" :fill="color" />
-  </svg>
-</template>
-
-<script lang="ts">
+<script lang="tsx">
 export default defineComponent({
   name: 'Icon',
   props: {
@@ -27,8 +21,11 @@ export default defineComponent({
   },
   setup(props) {
     const symbolId = computed(() => `#${props.prefix}-${props.name}`)
-    const className = computed(() => `icon text-${props.size}px`)
-    return { symbolId, className }
+    return () => (
+      <svg aria-hidden="true" class={[`icon text-[${props.size}px]`]}>
+        <use xlinkHref={symbolId.value} fill={props.color} />
+      </svg>
+    )
   }
 })
 </script>

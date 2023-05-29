@@ -1,5 +1,5 @@
 import Icon from '@/components/Icon/index.vue'
-import { DropdownOption } from 'naive-ui'
+import { type DropdownOption } from 'naive-ui'
 import useTabs from './utils'
 import { configStore } from '@stores/modules/config'
 import { themeStore } from '@stores/modules/theme'
@@ -10,10 +10,10 @@ export const Suffix = defineComponent({
     const { isRefresh, prefix } = storeToRefs(configStore())
     const { showRefresh } = storeToRefs(themeStore())
     const className = ref(
-      `w-36px h-1/1 flex justify-center items-center cursor-pointer ${prefix.value}-tabs-extra-fn`
+      `w-[36px] h-full flex justify-center items-center cursor-pointer ${prefix.value}-tabs-extra-fn`
     )
     return () => (
-      <div class={'h-1/1 flex'}>
+      <div class={'h-full flex'}>
         {showRefresh.value ? (
           <div class={className.value} onClick={() => !isRefresh.value && refreshRoute()}>
             <NButton

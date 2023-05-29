@@ -8,7 +8,7 @@ export default defineComponent({
   setup() {
     const store = themeStore()
     return () => (
-      <div class={'mr-14px'}>
+      <div class={'mr-[14px]'}>
         <Icon
           name={store.isFullScreen ? 'quxiaoquanping_o' : 'quanping_o'}
           class={['cursor-pointer']}

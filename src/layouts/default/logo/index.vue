@@ -23,11 +23,11 @@ export default defineComponent({
     })
     return () =>
       showLogo.value ? (
-        <div class="h-48px flex items-center" style={border.value}>
-          <SvgIcon name="logo-icon" size={40} class="mx-10px" />
+        <div class="flex items-center h-[48px]" style={border.value}>
+          <SvgIcon name="logo-icon" class="mx-[10px] text-[40px]" />
           {layout.value === 2 || !siderFold.value ? (
             <strong
-              class="text-size-16px leading-normal transition-all duration-500"
+              class="leading-normal transition-all duration-500 text-size-16px"
               style={{
                 color: titColor.value
               }}

@@ -18,9 +18,12 @@ export default defineComponent({
     const { theme } = storeToRefs(themeStore())
     const { setMenuSelect } = refStore()
     return () => (
-      <div class={'h-30px relative'} style={{ borderTop: theme.value ? '' : '1px solid #d9d9d9' }}>
+      <div
+        class={'h-[27px] relative'}
+        style={{ borderTop: theme.value ? '' : '1px solid #d9d9d9' }}
+      >
         <div
-          class="h-1/1"
+          class="h-full"
           style={{
             width: ' calc(100% - (8px / 2))'
           }}

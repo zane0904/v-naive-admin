@@ -13,7 +13,7 @@ export default defineComponent({
     return () => (
       <NLayoutHeader
         inverted={store.headerColor !== colorFFF}
-        class={[`h-${store.headerHeight}px`, 'flex', 'items-center']}
+        class={[`h-[${store.headerHeight}px]`, 'flex', 'items-center']}
       >
         {store.layout > 1 ? <Logo class={[w.value]} /> : <div></div>}
         {store.foldBtnPosition === 'top' && store.layout !== 3 ? <Fold /> : null}

@@ -81,8 +81,8 @@
                 <NPopover trigger="hover" placement="top">
                   <template v-slot:trigger>
                     <div>
-                      <span class="mr-14px">内嵌地址</span>
-                      <SvgIcon name="helpEmpty" class="-ml-10px" />
+                      <span class="mr-[14px]">内嵌地址</span>
+                      <SvgIcon name="helpEmpty" class="-ml-[10px]" />
                     </div>
                   </template>
                   <div>
@@ -178,9 +178,9 @@ import { Modal, useModal } from '@/components/Modal/index'
 import { useHttp } from '@/hooks/useHttp'
 import { deepPaths } from '@/utils'
 import { createNotification } from '@/utils/message'
-import { FormInst, FormItemRule, FormRules } from 'naive-ui'
-import { IMenuList } from '../type'
-import { glyphs } from '@/assets/icon.json'
+import { type FormInst, type FormItemRule, type FormRules } from 'naive-ui'
+import { type IMenuList } from '../type'
+import { glyphs } from '@public/icon.json'
 const initialState = {
   parentId: '',
   type: 1,
@@ -244,7 +244,7 @@ const rules: FormRules = {
   path: [
     {
       required: true,
-      validator(rule: FormItemRule, value: string) {
+      validator(_rule: FormItemRule, value: string) {
         if (!value) {
           return new Error(model.type === 2 ? '请输入路由地址' : '请输入权限标识')
         }

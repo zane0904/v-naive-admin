@@ -1,17 +1,17 @@
 <script lang="tsx">
-import { configStore } from '@/pinia/modules/config'
-import { BasicTableProps } from './type/table'
+import { configStore } from '@stores/modules/config'
+import { type BasicTableProps } from './type/table'
 import TableHeader from './components/TableHeader.vue'
 import { merge } from 'lodash-es'
 import { useAfterFetch } from './hooks/useFetch'
-import { DataTableProps } from 'naive-ui'
+import { type DataTableProps } from 'naive-ui'
 export default defineComponent({
   name: 'BasicTable',
   components: {
     TableHeader
   },
   emits: ['register'],
-  setup(props, { attrs, slots, emit }) {
+  setup(_, { attrs, slots, emit }) {
     const { prefix } = storeToRefs(configStore())
     const wrapper = '-table-wrapper'
     const tableClass = ref(prefix.value + wrapper)

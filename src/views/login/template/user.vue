@@ -2,7 +2,7 @@
 import { defineComponent } from 'vue'
 import Register from './register.vue'
 import UserNameLogin from '../src/components/userNameLogin.vue'
-import { IUserNameLogin, TargetContext } from '../src/type'
+import type { IUserNameLogin, TargetContext } from '../src/type'
 import { userRules } from '../src/config'
 import UserName from '../src/components/userName.vue'
 import PassWord from '../src/components/passWord.vue'
@@ -29,7 +29,7 @@ export default defineComponent({
     const { loading, loginGO } = userNameLogin(formValue)
     const form = () => (
       <>
-        <h1 class="mb-12px text-size-30px">
+        <h1 class="mb-[12px] text-[30px]">
           <b>登录</b>
         </h1>
         <NForm ref={ElRef} model={formValue} rules={userRules} label-placement="left">
@@ -41,10 +41,8 @@ export default defineComponent({
             v-model:picId={formValue.picId}
           />
         </NForm>
-        <div class="flex justify-between">
-          <div></div>
-          <a class={'cursor-pointer'}></a>
-          <NButton text tag="a" target="_blank" type="info">
+        <div class="flex justify-end">
+          <NButton text tag="a" type="info">
             忘记密码?
           </NButton>
         </div>
@@ -52,7 +50,7 @@ export default defineComponent({
         <NButton
           type="info"
           loading={loading.value}
-          class={'w-1/1 mb-10px'}
+          class={'w-full mb-10px'}
           onClick={(e: MouseEvent) => {
             e.preventDefault()
             ;(ElRef.value as any).validate(async (errors: any) => {
