@@ -1,6 +1,6 @@
 import { colorFFF } from '@/config'
 import { themeStore } from '@stores/modules/theme'
-import { GlobalThemeOverrides } from 'naive-ui'
+import type { GlobalThemeOverrides } from 'naive-ui'
 
 const themeOverrides = (): GlobalThemeOverrides => {
   const store = themeStore()

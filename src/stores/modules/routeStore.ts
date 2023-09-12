@@ -1,8 +1,8 @@
 import { baseHome, storePrefix } from '@/config'
 // import { removeRoute } from '@/router/utils/remove'
-import { type PermsType, type RouteType } from '@/type/route'
+import type { PermsType, RouteType } from '@/type/route'
 import { defineStore } from 'pinia'
-import { type TabsType } from '../type/user'
+import type { TabsType } from '../type/user'
 import { userProfileStore } from './user'
 
 export const routeStore = defineStore({

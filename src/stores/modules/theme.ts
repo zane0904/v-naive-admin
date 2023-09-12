@@ -1,6 +1,6 @@
-import { type LocaleType } from '@/enum/locale'
+import type { LocaleType } from '@/enum/locale'
 import { headerColor, siderColor, storePrefix, themeColor } from '@/config'
-import { type Layout, type Position } from '@/type/config'
+import type { Layout, Position } from '@/type/config'
 import { defineStore } from 'pinia'
 import settings from '@/config/settings'
 

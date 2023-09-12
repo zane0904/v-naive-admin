@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
 import { http } from '@/http'
-import { RequestCustom, RequestOptions } from '@/type/http'
-import { Method } from 'axios'
+import type { RequestCustom, RequestOptions } from '@/type/http'
+import type { Method } from 'axios'
 import { merge } from 'lodash-es'
 type Headers = Pick<RequestOptions, 'headers'>
 interface ISetHeader {

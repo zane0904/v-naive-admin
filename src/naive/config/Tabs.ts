@@ -1,5 +1,5 @@
 import { themeStore } from '@stores/modules/theme'
-import { TabsThemeVars } from 'naive-ui/lib/tabs/styles'
+import type { TabsThemeVars } from 'naive-ui/lib/tabs/styles'
 
 const TabsThemeConfig = (): Partial<TabsThemeVars> => {
   const store = themeStore()

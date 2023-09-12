@@ -1,4 +1,4 @@
-import { type ProjectConfig } from '@/type/config'
+import type { ProjectConfig } from '@/type/config'
 const settings: ProjectConfig = {
   layout: 1,
   themeColor: '#409eff',

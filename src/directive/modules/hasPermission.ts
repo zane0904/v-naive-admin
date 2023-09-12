@@ -1,5 +1,5 @@
 import { usePermissions } from '@/hooks/usePermission'
-import { type App } from 'vue'
+import type { App } from 'vue'
 //权限检查方法
 function checkPermission(value: string | []): boolean {
   const { hasPermission } = usePermissions()

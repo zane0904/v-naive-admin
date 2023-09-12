@@ -1,4 +1,4 @@
-import { RouteMeta } from 'vue-router'
+import type { RouteMeta } from 'vue-router'
 import { Expand } from '.'
 import { Component } from './component'
 

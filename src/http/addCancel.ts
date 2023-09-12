@@ -1,4 +1,4 @@
-import { PendingType, RequestOptions } from '@/type/http'
+import type { PendingType, RequestOptions } from '@/type/http'
 import axios from 'axios'
 import { addPending } from './cancel'
 export const addCancel = (request: RequestOptions) => {

@@ -1,10 +1,10 @@
 import { permissionMode } from '@/config'
 import { RoleEnum } from '@/enum/route'
 import { routeStore } from '@stores/modules/routeStore'
-import { Component } from '@/type/component'
-import { RouteType } from '@/type/route'
+import type { Component } from '@/type/component'
+import type { RouteType } from '@/type/route'
 import { DeepCopy } from '@utils'
-import { RouteLocationNormalized } from 'vue-router'
+import type { RouteLocationNormalized } from 'vue-router'
 import { errSymbol, moveRoutersMap } from '../moveRoutes'
 /**
  * @name 组件转换

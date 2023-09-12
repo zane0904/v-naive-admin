@@ -3,11 +3,16 @@ import { RequestEnum } from '@/enum/axios'
 import { useGo } from '@/hooks/router'
 import { routeStore } from '@stores/modules/routeStore'
 import { userProfileStore } from '@stores/modules/user'
-import { SetOptional } from '@/type'
-import { ErrorInfo, RequestOptions, TConversion } from '@/type/http'
+import type { SetOptional } from '@/type'
+import type { ErrorInfo, RequestOptions, TConversion } from '@/type/http'
 import { createNotification } from '@/utils/message'
 import { uuid } from '@/utils/utils'
-import axios, { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios'
+import axios, {
+  AxiosError,
+  type AxiosInstance,
+  type AxiosRequestConfig,
+  type AxiosResponse
+} from 'axios'
 import { addCancel } from './addCancel'
 import { cancelPending, deletePending } from './cancel'
 import { TipMsg } from './Tips'

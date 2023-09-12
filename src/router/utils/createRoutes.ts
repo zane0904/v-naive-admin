@@ -1,7 +1,7 @@
 import { permissionMode } from '@/config'
 import { RoleEnum } from '@/enum/route'
 import { routeStore } from '@stores/modules/routeStore'
-import { RouteType } from '@/type/route'
+import type { RouteType } from '@/type/route'
 import { RenderComponent, transformRoute } from '.'
 import { router } from '..'
 import { roleRoutesMap } from '../roleRoutes'

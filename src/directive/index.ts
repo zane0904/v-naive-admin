@@ -1,4 +1,4 @@
-import { App } from 'vue'
+import type { App } from 'vue'
 const modules = import.meta.globEager('./modules/**/*.ts')
 const installAllDirective = function (app: App<Element>) {
   Object.keys(modules).forEach(async item => {

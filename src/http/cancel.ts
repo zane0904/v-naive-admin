@@ -1,4 +1,4 @@
-import { PendingType, RequestOptions } from '@/type/http'
+import type { PendingType, RequestOptions } from '@/type/http'
 /**
   @name axiosRequestMap
   @Fun 所有请求暂存

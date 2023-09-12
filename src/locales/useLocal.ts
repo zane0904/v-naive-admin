@@ -1,4 +1,4 @@
-import { LocaleType } from '@/enum/locale'
+import type { LocaleType } from '@/enum/locale'
 import { themeStore } from '@/stores/modules/theme'
 import { computed } from 'vue'
 import { i18n } from '.'

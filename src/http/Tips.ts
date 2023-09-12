@@ -1,5 +1,5 @@
 import { AxiosErrorTip, responseErrInfo } from '@/enum/axios'
-import { RequestOptions } from '@/type/http'
+import type { RequestOptions } from '@/type/http'
 import { createModal, createMsg, createNotification } from '@/utils/message'
 import type { AxiosError } from 'axios'
 export const TipMsg = (response: AxiosError) => {

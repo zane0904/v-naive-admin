@@ -1,6 +1,6 @@
 import { carryToken, RETRY_COUNT, RETRY_INTERVAL, RETRY_OPENRETRY } from '@/config'
 import { AxiosErrorTip, ContentTypeEnum, ignoreTip } from '@/enum/axios'
-import { RequestOptions } from '@/type/http'
+import type { RequestOptions } from '@/type/http'
 import { merge } from 'lodash-es'
 import { VAxios } from './axios'
 export const data: RequestOptions = {

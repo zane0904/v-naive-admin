@@ -1,4 +1,4 @@
-import { RouteType } from '@/type/route'
+import type { RouteType } from '@/type/route'
 import { MenuIcon } from '../../../../mock/config/icon'
 
 const route: Array<RouteType> = [

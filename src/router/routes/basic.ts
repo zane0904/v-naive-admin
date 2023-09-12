@@ -1,4 +1,4 @@
-import { RouteRecordRaw } from 'vue-router'
+import type { RouteRecordRaw } from 'vue-router'
 const layoutPage = () => import(`@/layouts/default/view.vue`)
 const error404Page = () => import(`@/layouts/error/404.vue`)
 const login: Array<RouteRecordRaw> = [

@@ -1,5 +1,5 @@
 import { logError, logWarn } from '@utils/log'
-import { Router } from 'vue-router'
+import type { Router } from 'vue-router'
 import { router as rootRouter } from '@/router'
 const handleError = (e: Error) => logError(e)
 /**

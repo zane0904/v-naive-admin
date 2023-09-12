@@ -1,5 +1,5 @@
 import { http } from '@/http'
-import { IUserNameLogin } from '@/views/login/src/type'
+import type { IUserNameLogin } from '@/views/login/src/type'
 import { Api } from './Api'
 export const baseUrl = '/api'
 // export const permissions = () => http.post(`${baseUrl}${Api.permissions}`)

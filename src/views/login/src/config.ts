@@ -1,5 +1,5 @@
 import { emailReg, grade } from '@/utils/regExp'
-import { FormItemRule, FormRules } from 'naive-ui'
+import type { FormItemRule, FormRules } from 'naive-ui'
 export const UserNameRules: FormRules = {
   userName: [
     {
