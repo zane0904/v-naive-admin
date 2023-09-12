@@ -14,13 +14,7 @@ declare module '@vue/runtime-core' {
     Content: typeof import('./../components/Content/index.vue')['default']
     DescriptionsSrc: typeof import('./../components/Descriptions/src/index.vue')['default']
     FormSrc: typeof import('./../components/Form/src/index.vue')['default']
-    HelloWorld: typeof import('./../components/HelloWorld.vue')['default']
     Icon: typeof import('./../components/Icon/index.vue')['default']
-    IconsIconCommunity: typeof import('./../components/icons/IconCommunity.vue')['default']
-    IconsIconDocumentation: typeof import('./../components/icons/IconDocumentation.vue')['default']
-    IconsIconEcosystem: typeof import('./../components/icons/IconEcosystem.vue')['default']
-    IconsIconSupport: typeof import('./../components/icons/IconSupport.vue')['default']
-    IconsIconTooling: typeof import('./../components/icons/IconTooling.vue')['default']
     JsonView: typeof import('./../components/JsonView/index.vue')['default']
     ModalSrc: typeof import('./../components/Modal/src/index.vue')['default']
     NBackTop: typeof import('naive-ui')['NBackTop']
@@ -74,8 +68,6 @@ declare module '@vue/runtime-core' {
     SvgIcon: typeof import('./../components/SvgIcon/index.vue')['default']
     TableSrcBasicTable: typeof import('./../components/Table/src/BasicTable.vue')['default']
     TableSrcComponentsTableHeader: typeof import('./../components/Table/src/components/TableHeader.vue')['default']
-    TheWelcome: typeof import('./../components/TheWelcome.vue')['default']
-    WelcomeItem: typeof import('./../components/WelcomeItem.vue')['default']
     WindowUtils: typeof import('./../components/windowUtils/index.vue')['default']
   }
 }

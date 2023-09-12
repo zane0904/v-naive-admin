@@ -1,4 +1,4 @@
-import { App } from 'vue'
+import type { App } from 'vue'
 import { createI18n } from 'vue-i18n'
 import type { I18n, I18nOptions } from 'vue-i18n'
 import { set } from 'lodash-es'
