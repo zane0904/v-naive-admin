@@ -8,7 +8,7 @@ export default defineComponent({
   setup(props, { emit }) {
     return () => (
       <NFormItem label={props.name} label-align={'left'} label-placement={'left'}>
-        <div class={'w-1/1 flex flex-row-reverse'}>
+        <div class={'w-full flex flex-row-reverse'}>
           <NInputNumber
             style={{ width: '110px' }}
             step="10"

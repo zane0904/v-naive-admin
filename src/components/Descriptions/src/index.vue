@@ -1,7 +1,7 @@
 <script lang="tsx">
 import { NH4 } from 'naive-ui'
-import { PropType } from 'vue'
-import { IDescExample, IDescriptionProps } from './type'
+import type { PropType } from 'vue'
+import type { IDescExample, IDescriptionProps } from './type'
 export default defineComponent({
   name: 'Description',
   props: {

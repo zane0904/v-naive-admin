@@ -1,9 +1,9 @@
-import { SelectMixedOption } from 'naive-ui/lib/select/src/interface'
-import { PropType } from 'vue'
+import type { SelectMixedOption } from 'naive-ui/lib/select/src/interface'
+import type { PropType } from 'vue'
 const basicProps = {
   name: {
     type: String,
-    default: 'xx'
+    default: 'x'
   },
   model: {
     type: [String, Number, Boolean]

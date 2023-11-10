@@ -1,5 +1,5 @@
+import type { ProjectConfig } from '@/type/config'
 import { themeStore } from '@stores/modules/theme'
-import { ProjectConfig } from '@/type/config'
 
 export const useOptions = () => {
   const {

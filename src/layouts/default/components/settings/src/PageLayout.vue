@@ -1,7 +1,7 @@
 <script lang="tsx">
 import { LayoutOptions } from '@/config'
 import { themeStore } from '@stores/modules/theme'
-import { Layout } from '@/type/config'
+import type { Layout } from '@/type/config'
 export default defineComponent({
   name: 'PageLayout',
   setup() {
@@ -11,7 +11,7 @@ export default defineComponent({
       () => (store.siderFold = false)
     )
     return () => (
-      <NRow class={['h-50px', 'themeBox', 'fle', 'justify-between']}>
+      <NRow class={['h-[50px]', 'themeBox', 'fle', 'justify-between']}>
         {LayoutOptions.map(item => {
           return (
             <NCol span={5} class={['flex', 'justify-center']}>
@@ -22,7 +22,7 @@ export default defineComponent({
                   trigger: () => (
                     <div
                       class={[
-                        'w-1/1 h-/1',
+                        'w-full h-full',
                         'box',
                         `box${item.id}`,
                         store.layout === item.id ? 'active' : ''

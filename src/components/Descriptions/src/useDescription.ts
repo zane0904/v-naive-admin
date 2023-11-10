@@ -1,4 +1,4 @@
-import { IDescExample, IDescriptionProps, UseDescReturnType } from './type'
+import type { IDescExample, IDescriptionProps, UseDescReturnType } from './type'
 
 export const useDescription = (props: IDescriptionProps): UseDescReturnType => {
   if (!getCurrentInstance()) {
@@ -16,3 +16,4 @@ export const useDescription = (props: IDescriptionProps): UseDescReturnType => {
   }
   return [register, methods]
 }
+export default useDescription

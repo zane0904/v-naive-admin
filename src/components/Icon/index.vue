@@ -6,6 +6,10 @@ export default defineComponent({
       type: String,
       default: 'naive-icon'
     },
+    onClick: {
+      type: Function,
+      default: () => {}
+    },
     name: {
       type: String,
       required: true
@@ -22,7 +26,11 @@ export default defineComponent({
   setup(props) {
     const symbolId = computed(() => `#${props.prefix}-${props.name}`)
     return () => (
-      <svg aria-hidden="true" class={[`icon text-[${props.size}px]`]}>
+      <svg
+        aria-hidden="true"
+        class={[`icon text-[${props.size}px]`]}
+        onClick={() => props.onClick()}
+      >
         <use xlinkHref={symbolId.value} fill={props.color} />
       </svg>
     )

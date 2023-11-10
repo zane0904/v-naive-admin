@@ -1,7 +1,7 @@
 import { routeStore } from '@stores/modules/routeStore'
-import { TabsType } from '@stores/type/user'
+import { type TabsType } from '@stores/type/user'
 import { router } from '@/router'
-import { DropdownOption } from 'naive-ui'
+import { type DropdownOption } from 'naive-ui'
 import { computed, reactive } from 'vue'
 import { renderIcon } from '../config'
 import { TabsEmnu } from '@/config'
@@ -53,7 +53,6 @@ export default function useTabs() {
       }
     ]
   })
-  // 关闭当前
   // 关闭当前
   const closeTabs = (item: TabsType) => {
     if (!item.isClose) {

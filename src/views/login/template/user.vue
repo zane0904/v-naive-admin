@@ -21,7 +21,7 @@ export default defineComponent({
     const ElRef = ref<Element>()
     const picRef = ref<Element>()
     const formValue: IUserNameLogin = reactive({
-      userName: 'admin',
+      userName: 'Admin',
       password: 'Admin123456',
       picCode: '',
       picId: ''

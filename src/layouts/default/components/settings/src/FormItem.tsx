@@ -6,7 +6,7 @@ export const FormItemComp = defineComponent({
   setup(props, { slots }) {
     return () => (
       <NFormItem label={props.name} label-align={'left'} label-placement={'left'}>
-        <div class={'w-1/1 flex flex-row-reverse'}>{slots.default && slots.default()}</div>
+        <div class={'w-full flex flex-row-reverse'}>{slots.default && slots.default()}</div>
       </NFormItem>
     )
   }

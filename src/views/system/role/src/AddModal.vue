@@ -28,7 +28,7 @@
               multiple
             /> -->
             <div
-              class="border border-opacity-50 border-solid border-gray-400 w-1/1 max-h-210px overflow-auto box"
+              class="border border-opacity-50 border-solid border-gray-400 w-full max-h-210px overflow-auto box"
             >
               <NTree
                 cascade
@@ -51,11 +51,11 @@
 
 <script lang="ts" setup>
 import { Api } from '@/api/Api'
-import { Modal, useModal } from '@/components/Modal/index'
+import { Modal, UseModal } from '@/components/Modal/index'
 import { useHttp } from '@/hooks/useHttp'
 import { createNotification } from '@/utils/message'
-import { FormInst, FormRules } from 'naive-ui'
-import { IMenuList } from '../../menu/type'
+import type { FormInst, FormRules } from 'naive-ui'
+import type { IMenuList } from '../../menu/type'
 const initialState = {
   name: '',
   label: '',
@@ -106,7 +106,7 @@ const rules: FormRules = {
   }
 }
 
-const [register, setModal] = useModal({
+const [register, setModal] = UseModal({
   title: '新增角色',
   show: props.showModal,
   props: {

@@ -1,6 +1,6 @@
 <script lang="tsx">
 import { defineComponent, ref } from 'vue'
-import { IAttrs, IModalExample, IModalProps } from './type'
+import type { IAttrs, IModalExample, IModalProps } from './type'
 export default defineComponent({
   name: 'Modal',
   emits: ['register'],

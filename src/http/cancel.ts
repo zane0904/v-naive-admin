@@ -1,17 +1,17 @@
 import type { PendingType, RequestOptions } from '@/type/http'
 /**
-  @name axiosRequestMap
-  @Fun 所有请求暂存
+  @remarks axiosRequestMap
+  @remarks 所有请求在此进行暂存
 **/
 export const axiosRequestMap: Map<string, PendingType> = new Map()
 /**
-  @name cancelRequestMap
-  @Fun 所有请求的取消方法暂存
+  @remarks cancelRequestMap
+  @remarks 所有请求的取消方法暂存
 **/
 export const cancelRequestMap: Map<string, () => void> = new Map()
 /**
-  @name handleName
-  @Fun 处理暂存到 axiosRequestMap 方法中时对应的KEY
+  @remarks handleName
+  @remarks 处理暂存到 axiosRequestMap 方法中时对应的KEY
 **/
 export const handleName = (config: RequestOptions) => {
   let url: string
@@ -24,7 +24,7 @@ export const handleName = (config: RequestOptions) => {
 }
 
 /**
-  @name addPending
+  @remarks addPending
   @Fun 添加一条到 axiosRequestMap
 **/
 export const addPending = (request: PendingType) => {
@@ -32,7 +32,7 @@ export const addPending = (request: PendingType) => {
   cancelRequestMap.set(request.requestOptions.id!, request.cancel)
 }
 /**
-  @name deletePending
+  @remarks deletePending
   @Fun map中删除一条
 **/
 export const deletePending = (request: RequestOptions) => {
@@ -44,7 +44,7 @@ export const deletePending = (request: RequestOptions) => {
   }
 }
 /**
-  @name cancelPending
+  @remarks cancelPending
   @Fun 调用取消方法取消请求，并从map中删除
 **/
 export const cancelPending = (request: RequestOptions) => {

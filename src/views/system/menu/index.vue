@@ -20,12 +20,12 @@
 <script lang="tsx" setup>
 import { Api } from '@/api/Api'
 import { useHttp } from '@/hooks/useHttp'
-import { DataTableColumns, useDialog } from 'naive-ui'
+import { type DataTableColumns, useDialog } from 'naive-ui'
 import AddModal from './src/AddModal.vue'
 import { createNotification } from '@/utils/message'
-import { BasicTable, useTable } from '@/components/Table'
+import { BasicTable, UseTable } from '@/components/Table'
 import { getMenuList } from '@/api'
-import { IMenuList } from './type'
+import type { IMenuList } from './type'
 import Icon from '@/components/Icon/index.vue'
 const userRouter = useRouter()
 const dialog = useDialog()
@@ -156,7 +156,7 @@ const columns: DataTableColumns<IMenuList> = [
               secondary
               type="success"
               v-hasPermission={['system.menu.add']}
-              onclick={() => {
+              onClick={() => {
                 showModal.value = true
                 parentId.value = row.id!
               }}
@@ -188,7 +188,7 @@ const columns: DataTableColumns<IMenuList> = [
     }
   }
 ]
-const { register, methods } = useTable({
+const { register, methods } = UseTable({
   columns,
   // title: () => 'xxxx',
   api: getMenuList,

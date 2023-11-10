@@ -3,20 +3,21 @@ import { RoleEnum } from '@/enum/route'
 import { type SelectMixedOption } from 'naive-ui/lib/select/src/interface'
 import { Locale } from '@/enum/locale'
 /**
- * @names 是否启用多语言
- * **/
+ * @remarks 是否启用多语言
+ * @name 1
+ **/
 export const isI18n = false
 /**
- * @names pinia命名空间前缀
- * **/
+ * @remarks pinia命名空间前缀
+ **/
 export const storePrefix = `${import.meta.env.VITE_APP_TITLE || 'admin'}_`
 /**
- * @names basic home path
- * **/
+ * @remarks basic home path
+ **/
 export const baseHome = '/home'
 /**
- * @names 是否每次刷新页面都请求权限接口
- * **/
+ * @remarks 是否每次刷新页面都请求权限接口
+ **/
 export const onLoadGetPermission = true
 /**
 * @name 路由模式 => 使用方式
@@ -24,7 +25,7 @@ export const onLoadGetPermission = true
   2. 角色控制,根据角色判断能否进入,需要在路由中配置好,可以数组形式存在 ROLE
   3. 动态路由,返回信息具体 BACK
 **/
-export const permissionMode = RoleEnum.BACK
+export const permissionMode: `${RoleEnum}` = RoleEnum.BACK
 // 不添加到tabs中
 export const noAddTabs = ['redirectPath', 'redirect', '404', 'login']
 /**
@@ -53,8 +54,8 @@ export const carryToken = true
  **/
 export const filterRequestUrl: Array<string> = ['/login']
 /**
- * @names 接口默认携带请求时间time字段
- * **/
+ * @remarks 接口默认携带请求时间time字段
+ **/
 export const axiosTimeName = '_t'
 /**
  *  设置对应的请求参数中放入时间戳
@@ -66,16 +67,16 @@ export const axiosAddTime = [
   RequestEnum.OPTIONS
 ]
 /**
- * @names 自定义token字段
- * **/
+ * @remarks 自定义token字段
+ **/
 export const axiosTokenName = 'X-Access-Token'
 /**
- * @names 白色变量
- * **/
+ * @remarks 白色变量
+ **/
 export const colorFFF = '#ffffff'
 /**
- * @names 布局配置
- * **/
+ * @remarks 布局配置
+ **/
 export const LayoutOptions = [
   {
     id: 1,
@@ -89,15 +90,11 @@ export const LayoutOptions = [
     id: 3,
     name: '顶部菜单模式'
   }
-  // {
-  //   id: 4,
-  //   name: '左侧菜单混合模式',
-  // },
 ]
 /**
- * @names 主题颜色
+ * @remarks 主题颜色
  * @Tips 不建议更改颜色
- * **/
+ **/
 export const themeColor = [
   colorFFF,
   '#151515',
@@ -112,9 +109,9 @@ export const themeColor = [
   '#383f45'
 ] as const
 /**
- * @names 左侧菜单颜色
+ * @remarks 左侧菜单颜色
  * @Tips 不建议更改颜色
- * **/
+ **/
 export const siderColor = [
   colorFFF,
   '#151515',
@@ -129,9 +126,9 @@ export const siderColor = [
   '#383f45'
 ] as const
 /**
- * @names 顶部菜单颜色
+ * @remarks 顶部菜单颜色
  * @Tips 不建议更改颜色
- * **/
+ **/
 export const headerColor = [
   '#018ffb',
   '#212121',
@@ -145,8 +142,8 @@ export const headerColor = [
   '#383f45'
 ] as const
 /**
- * @names 多语言
- * **/
+ * @remarks 多语言
+ **/
 export const LangOptions = [
   {
     label: '简体中文',
@@ -170,8 +167,8 @@ export const LangOptions = [
   }
 ]
 /**
- * @names 控制折叠左侧菜单按钮位置
- * **/
+ * @remarks 控制折叠左侧菜单按钮位置
+ **/
 export const MenuFold: Array<SelectMixedOption> = [
   {
     label: '不显示',
@@ -187,8 +184,8 @@ export const MenuFold: Array<SelectMixedOption> = [
   }
 ]
 /**
- * @names 切换路由动态 暂不支持
- * **/
+ * @remarks 切换路由动态 暂不支持
+ **/
 export const AnimationType = [
   {
     label: '动画1',

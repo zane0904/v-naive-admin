@@ -10,17 +10,18 @@ import { uuid } from '@/utils/utils'
 import axios, {
   AxiosError,
   type AxiosInstance,
-  type AxiosRequestConfig,
-  type AxiosResponse
+  // type AxiosRequestConfig,
+  type AxiosResponse,
+  type InternalAxiosRequestConfig
 } from 'axios'
 import { addCancel } from './addCancel'
 import { cancelPending, deletePending } from './cancel'
 import { TipMsg } from './Tips'
 export class VAxios {
-  private requestOptions: RequestOptions
+  // private requestOptions: RequestOptions
   private AxiosInstance: AxiosInstance
   constructor(requestOptions: RequestOptions) {
-    this.requestOptions = requestOptions
+    // this.requestOptions = requestOptions
     this.AxiosInstance = axios.create(requestOptions)
     this.interceptors() //this.AxiosInstance
   }
@@ -32,7 +33,7 @@ export class VAxios {
   //   请求拦截器
   private initRequestInterceptors() {
     this.AxiosInstance.interceptors.request.use(
-      async (request: AxiosRequestConfig) => {
+      async (request: InternalAxiosRequestConfig) => {
         // .log('request', request)
         const { requestOptions } = request as any
         const { joinTime, withToken, ignoreRequest } = requestOptions

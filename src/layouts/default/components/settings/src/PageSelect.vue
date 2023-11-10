@@ -8,7 +8,7 @@ export default defineComponent({
     const val = toRef(props, 'model')
     return () => (
       <NFormItem label={props.name} label-align={'left'} label-placement={'left'}>
-        <div class={'w-1/1 flex flex-row-reverse'}>
+        <div class={'w-full flex flex-row-reverse'}>
           <NSelect
             default-value={val.value}
             onUpdateValue={v => emit('update:model', v)}

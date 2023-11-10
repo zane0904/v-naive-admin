@@ -46,7 +46,7 @@ export enum AxiosErrorTip {
 }
 /**
  *  如果有重复提示信息
- * **/
+ **/
 export const ignoreTip = '请求重复,请稍后重试'
 // 接口异常 状态码提示信息
 export const responseErrInfo: {

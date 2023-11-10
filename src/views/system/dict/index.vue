@@ -27,12 +27,12 @@
 <script lang="tsx" setup>
 import { APiSystem, Api } from '@/api/Api'
 import { useHttp } from '@/hooks/useHttp'
-import { DataTableColumns, useDialog } from 'naive-ui'
+import { type DataTableColumns, useDialog } from 'naive-ui'
 import AddDrawer from './src/addDrawer.vue'
 import { createNotification } from '@/utils/message'
-import { BasicTable, useTable } from '@/components/Table'
+import { BasicTable, UseTable } from '@/components/Table'
 import { getDIctTypeList } from '@/api'
-import { IDictTypeList } from './type'
+import type { IDictTypeList } from './type'
 const dialog = useDialog()
 const showModal = ref(false)
 const editInfo = ref<IDictTypeList | null>(null)
@@ -75,7 +75,7 @@ const addBtn = (row: IDictTypeList) => {
       secondary
       type="success"
       v-hasPermission={['system.menu.add']}
-      onclick={() => {
+      onClick={() => {
         modelType.value = 3
         showModal.value = true
         parentId.value = row.id!
@@ -156,7 +156,7 @@ const columns: DataTableColumns<IDictTypeList> = [
     }
   }
 ]
-const { register, methods } = useTable({
+const { register, methods } = UseTable({
   columns,
   // title: () => 'xxxx',
   api: getDIctTypeList,

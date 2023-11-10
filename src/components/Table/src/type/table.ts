@@ -1,5 +1,5 @@
-import { DataTableColumns, DataTableProps, PaginationProps } from 'naive-ui'
-import { Recordable } from 'vite-plugin-mock'
+import type { DataTableColumns, DataTableProps, PaginationProps } from 'naive-ui'
+import type { Recordable } from 'vite-plugin-mock'
 export interface TableSettings {
   showHeader?: boolean //header区域是否显示
   showRefresh?: boolean //刷新按钮

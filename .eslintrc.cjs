@@ -234,7 +234,7 @@ module.exports = defineConfig({
     ],
     'no-use-before-define': 2, //未定义前不能使用
     'no-useless-call': 2, //禁止不必要的call和apply
-    'no-void': 2, //禁用void操作符
+    'no-void': 0, //禁用void操作符
     'no-warning-comments': [1, { terms: ['todo', 'fixme', 'xxx'], location: 'start' }], //不能有警告备注
     'no-with': 2, //禁用with
     'array-bracket-spacing': [2, 'never'], //是否允许非空数组里面有多余的空格

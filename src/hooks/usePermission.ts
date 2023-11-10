@@ -2,20 +2,24 @@ import { permissionMode } from '@/config'
 import { RoleEnum } from '@/enum/route'
 import { routeStore } from '@stores/modules/routeStore'
 const permissionsMap = new Map()
+/**
+ * @remarks 获取各种权限方法
+ * @returns [ hasPermission() ]
+ **/
 export function usePermissions() {
   /**
-   * @names 检查是否具有权限
+   * @remarks 检查是否具有权限
    * @params value 限制 string || Array<string>
    * @return boolean
-   * **/
+   **/
   function hasPermission(value: string | string[]): boolean {
     if (!value) {
       return false
     }
     //   后端配置权限
     const { auth } = storeToRefs(routeStore())
-    //   @ts-ignore
     if (permissionMode === RoleEnum.MOVE || permissionMode === RoleEnum.BACK) {
+      // 兼容格式为数组
       const values = Array.isArray(value) ? value : [value]
       if (auth.value.length === 0) {
         return false

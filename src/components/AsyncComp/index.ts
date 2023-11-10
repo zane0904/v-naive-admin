@@ -1,5 +1,2 @@
-import { errorComponent } from './src/errorComponent'
-import { loadingComponent } from './src/loadingComponent'
-
-export const LoadingComponent = loadingComponent
-export const ErrorComponent = errorComponent
+export { default as errorComponent } from './src/errorComponent'
+export { default as loadingComponent } from './src/loadingComponent'

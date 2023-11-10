@@ -1,4 +1,4 @@
-import { ModalProps } from 'naive-ui'
+import { type ModalProps } from 'naive-ui'
 
 export interface IModalProps {
   title: string

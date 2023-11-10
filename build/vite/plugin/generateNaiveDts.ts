@@ -46,7 +46,6 @@ export function generateNaiveDts(options: Options): Plugin {
         })
       })
     })
-    // .slice(9, 10)
     await Promise.allSettled(componentsDtsPromises).then(results => {
       results.map(res => {
         // find export start with N name

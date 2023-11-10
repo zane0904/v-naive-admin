@@ -3,8 +3,8 @@ import dayjs, { Dayjs } from 'dayjs'
 import duration from 'dayjs/plugin/duration'
 import { green, blue, bold } from 'picocolors'
 import { getPackageSize } from '@pureadmin/utils'
+import { name, repository } from '../../../package.json'
 dayjs.extend(duration)
-
 export function viteBuildInfo(): Plugin {
   let config: { command: string }
   let startTime: Dayjs
@@ -20,9 +20,9 @@ export function viteBuildInfo(): Plugin {
       console.log(
         bold(
           green(
-            `👏欢迎使用${blue(
-              '[v-naive-admin]'
-            )}，如果您感觉不错，记得点击后面链接给个star哦💖 https://github.com/vzane0904/v-naive-admin`
+            `👏欢迎使用${blue(`[${name}]`)},如果您感觉不错,记得点击后面链接给个star哦💖 ${
+              repository.url
+            }`
           )
         )
       )
@@ -41,7 +41,7 @@ export function viteBuildInfo(): Plugin {
                 green(
                   `🎉恭喜打包完成（总用时${dayjs
                     .duration(endTime.diff(startTime))
-                    .format('mm分ss秒')}，打包后的大小为${size}）`
+                    .format('mm分ss秒')},打包后的大小为${size}）`
                 )
               )
             )

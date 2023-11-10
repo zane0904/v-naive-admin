@@ -4,3 +4,4 @@ export const loadingComponent = defineComponent({
     return () => <>loading组件</>
   }
 })
+export default loadingComponent

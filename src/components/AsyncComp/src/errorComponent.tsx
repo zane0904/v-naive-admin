@@ -4,3 +4,4 @@ export const errorComponent = defineComponent({
     return () => <>Error组件</>
   }
 })
+export default errorComponent

@@ -8,7 +8,7 @@ export const refStore = defineStore({
   actions: {
     /**
      @param setMenuSelect 设置左侧菜单选中
-     * **/
+    **/
     setMenuSelect(val: string) {
       this.menuRef?.showOption(val)
     }

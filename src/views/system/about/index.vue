@@ -17,15 +17,15 @@
 </template>
 
 <script lang="ts" setup>
-import { IInfoSchema } from '@/components/Descriptions/src/type'
-import { Description, useDescription } from '@components/Descriptions'
+import { type IInfoSchema } from '@/components/Descriptions/src/type'
+import { Description, UseDescription } from '@components/Descriptions'
 import dayjs from 'dayjs'
 import { renderLink, renderTag } from './src/rednder'
 const {
   pkg: { devDependencies, dependencies, version },
   lastBuildTime
 } = __APP_INFO__
-const [adminInfoRegister] = useDescription({
+const [adminInfoRegister] = UseDescription({
   title: '项目信息',
   schema: [
     {
@@ -76,7 +76,7 @@ const getJson = (obj: object) => {
   return { targetSchema, targetData }
 }
 const { targetSchema: proTargetSchema, targetData: proTargetData } = getJson(dependencies)
-const [ProdRegister] = useDescription({
+const [ProdRegister] = UseDescription({
   title: '生产环境依赖',
   schema: proTargetSchema,
   data: proTargetData,
@@ -84,7 +84,7 @@ const [ProdRegister] = useDescription({
   columns: 3
 })
 const { targetSchema: devTargetSchema, targetData: devTargetData } = getJson(devDependencies)
-const [devRegister] = useDescription({
+const [devRegister] = UseDescription({
   title: '开发环境依赖',
   schema: devTargetSchema,
   data: devTargetData,

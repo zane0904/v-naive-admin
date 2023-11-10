@@ -109,7 +109,7 @@ export default defineComponent({
           </NFormItem>
         </NForm>
         <NButton
-          class="w-1/1"
+          class="w-full"
           type="info"
           onClick={(e: MouseEvent) => {
             e.preventDefault()
@@ -142,7 +142,7 @@ export default defineComponent({
           注册
         </NButton>
         <NButton
-          class="mt-10px w-1/1"
+          class="mt-10px w-full"
           onClick={() => {
             emit('gx', 'user')
           }}

@@ -1,4 +1,4 @@
-import { BasicTableProps, ITableExample } from '../type/table'
+import type { BasicTableProps, ITableExample } from '../type/table'
 import { cloneDeep, merge } from 'lodash-es'
 import config from './default.config'
 const useTable = function (props: BasicTableProps) {

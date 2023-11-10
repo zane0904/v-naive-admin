@@ -4,7 +4,7 @@ import { useGo } from './router'
 /**
  * @name logOut 退出
  * @returns Promise
- * **/
+ **/
 export const useLogOut = () => {
   return new Promise(async (resolve, reject) => {
     try {

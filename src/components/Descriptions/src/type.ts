@@ -1,5 +1,5 @@
-import { DescriptionsProps } from 'naive-ui'
-import { VNode } from 'vue'
+import type { DescriptionsProps } from 'naive-ui'
+import type { VNode } from 'vue'
 // const NDescriptionsItem: typeof import('naive-ui')['NDescriptionsItem']
 export interface IInfoSchema extends DescriptionsProps {
   label: string

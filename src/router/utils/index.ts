@@ -9,7 +9,7 @@ import { errSymbol, moveRoutersMap } from '../moveRoutes'
 /**
  * @name 组件转换
  * @returns Vue Components
- * **/
+ **/
 const files = import.meta.glob(['/src/views/**/*.vue'])
 export const RenderComponent = (componentName: string): Component => {
   if (componentName === 'view') {

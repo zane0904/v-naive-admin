@@ -21,6 +21,7 @@ export default defineComponent({
     // onMounted(() => emit('refCallBack', { active }))
     const source = useOptions()
     const { copy, copied, isSupported } = useClipboard({ source })
+    // 监听主题变化切换颜色
     watch(
       () => store.theme,
       state => {
@@ -37,6 +38,7 @@ export default defineComponent({
         }
       }
     )
+    // 拷贝配置项
     watch(copied, () => {
       if (!isSupported) {
         createModal({
@@ -54,6 +56,30 @@ export default defineComponent({
         })
       }
     })
+    const clearAndReturnLoginPage = function () {
+      const example = createModal({
+        title: '温馨提示',
+        type: 'warning',
+        content: '是否清除当前所有配置并退出系统?',
+        positiveText: '确定',
+        negativeText: '取消',
+        maskClosable: false,
+        onPositiveClick: async () => {
+          return new Promise(async resolve => {
+            example.loading = true
+            store.$reset()
+            try {
+              await useLogOut()
+              const { openSettingDrawer } = storeToRefs(configStore())
+              resolve(true)
+              openSettingDrawer.value = false
+            } catch (error) {
+              logError(error as Error)
+            }
+          })
+        }
+      })
+    }
     return () => (
       <>
         <NDrawer v-model:show={openSettingDrawer.value} width={'330px'}>
@@ -105,30 +131,7 @@ export default defineComponent({
               <NButton
                 type="error"
                 class={'mb-10px'}
-                onClick={async () => {
-                  const example = createModal({
-                    title: '温馨提示',
-                    type: 'warning',
-                    content: '是否清除当前所有配置并退出系统?',
-                    positiveText: '确定',
-                    negativeText: '取消',
-                    maskClosable: false,
-                    onPositiveClick: async () => {
-                      return new Promise(async resolve => {
-                        example.loading = true
-                        store.$reset()
-                        try {
-                          await useLogOut()
-                          const { openSettingDrawer } = storeToRefs(configStore())
-                          resolve(true)
-                          openSettingDrawer.value = false
-                        } catch (error) {
-                          logError(error as Error)
-                        }
-                      })
-                    }
-                  })
-                }}
+                onClick={async () => clearAndReturnLoginPage()}
               >
                 清空并返回登录页
               </NButton>

@@ -7,7 +7,7 @@ const handleError = (e: Error) => logError(e)
  * @push String
  * @replace String
  * @returns ()=>Function
- * **/
+ **/
 export const useGo = (_router?: Router) => {
   let router = _router
   if (!router) {
@@ -45,7 +45,7 @@ export const useGo = (_router?: Router) => {
  * @useRefresh 刷新
  * @refresh String
  * @returns ()=>Function
- * **/
+ **/
 export const useRefresh = (_router: Router) => {
   let router = _router
   if (!router) {
@@ -61,5 +61,5 @@ export const useRefresh = (_router: Router) => {
 /**
  * @useRouter 获取路由实例
  * @returns Router
- * **/
+ **/
 export const useCustomizeRouter = () => rootRouter

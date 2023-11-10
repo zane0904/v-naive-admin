@@ -1,6 +1,6 @@
 <template>
   <NConfigProvider
-    class="flex flex-1 animate__animated animate__bounceInDown w-1/1 h-1/1"
+    class="flex flex-1 animate__animated animate__bounceInDown w-full h-full"
     :theme="store.theme ? darkTheme : null"
     :cls-prefix="confStore.prefix"
     :theme-overrides="themeOverride"

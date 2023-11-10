@@ -20,7 +20,7 @@ export const autoPath = 'src/type'
 export const createPlugin = (viteEnv: ViteEnv, isBuild: boolean, _command: string) => {
   const { VITE_APP_TITLE, VITE_APP_MOCK, VITE_APP_ANALYSIS } = viteEnv
   const vitePlugins: (Plugin | Plugin[])[] = [vue()]
-  // 打包开启压缩，提高性能
+  // 打包开启压缩,提高性能
   vitePlugins.push(compression())
   // 把 naive components 声明到全局
   vitePlugins.push(naiveDts())

@@ -1,4 +1,4 @@
-import { IModalProps, IModalExample, UseModalReturnType } from './type'
+import type { IModalProps, IModalExample, UseModalReturnType } from './type'
 export const useModal = (props: IModalProps): UseModalReturnType => {
   if (!getCurrentInstance()) {
     throw new Error('useModal() can only be used inside setup() or functional components!')
@@ -15,3 +15,4 @@ export const useModal = (props: IModalProps): UseModalReturnType => {
   }
   return [register, methods]
 }
+export default useModal

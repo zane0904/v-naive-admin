@@ -22,12 +22,12 @@
 <script lang="tsx" setup>
 import { APiSystem, Api } from '@/api/Api'
 import { useHttp } from '@/hooks/useHttp'
-import { DataTableColumns, useDialog } from 'naive-ui'
+import { type DataTableColumns, useDialog } from 'naive-ui'
 import AddModal from './src/addModal.vue'
 import { createNotification } from '@/utils/message'
-import { BasicTable, useTable } from '@/components/Table'
+import { BasicTable, UseTable } from '@/components/Table'
 import { getUserList } from '@/api'
-import { IUserList } from './type'
+import type { IUserList } from './type'
 import { usePermissions } from '@/hooks/usePermission'
 
 const dialog = useDialog()
@@ -152,7 +152,7 @@ const columns: DataTableColumns<IUserList> = [
     }
   }
 ]
-const { register, methods } = useTable({
+const { register, methods } = UseTable({
   columns,
   // title: () => 'xxxx',
   api: getUserList,

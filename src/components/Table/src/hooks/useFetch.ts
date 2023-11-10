@@ -1,4 +1,4 @@
-import { BasicTableProps } from '../type/table'
+import type { BasicTableProps } from '../type/table'
 import { cloneDeep } from 'lodash-es'
 import { toType } from '@/utils/dataType'
 export const beforeFetch = function () {}

@@ -15,7 +15,7 @@
         :value="size"
         @select="v => emit('update:size', v)"
       >
-        <div class="flex justify-center items-center h-1/1">
+        <div class="flex justify-center items-center h-full">
           <Icon name="colum-height" :size="20" class="cursor-pointer" />
         </div>
       </NDropdown>

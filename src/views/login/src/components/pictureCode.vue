@@ -34,7 +34,7 @@ export default defineComponent({
           show-password-on="click"
           placeholder="图片验证码"
         />
-        <div class="w-130px h-1/1 ml-10px">
+        <div class="w-130px h-full ml-10px">
           {data.value?.svg ? (
             <div v-html={data.value?.svg || ''} onClick={() => run()}></div>
           ) : (

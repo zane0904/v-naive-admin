@@ -1,10 +1,17 @@
 import { usePermissions } from '@/hooks/usePermission'
 import type { App } from 'vue'
-//权限检查方法
+/**
+ * @remarks 权限校验方法
+ * @returns boolean
+ **/
 function checkPermission(value: string | []): boolean {
   const { hasPermission } = usePermissions()
   return hasPermission(value)
 }
+/**
+ * @remarks DOM级别权限控制
+ * @param v-if="hasPermission('key')"
+ **/
 const hasPermission = {
   install(Vue: App<Element>) {
     //自定义指令v-has：

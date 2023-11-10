@@ -17,7 +17,7 @@ export default defineComponent({
             options={LangOptions}
             onSelect={k => setLocal(k)}
           >
-            <div class={'flex justify-center items-center h-1/1'}>
+            <div class={'flex justify-center items-center h-full'}>
               <Icon name="zhongwenyuyan" size={20} />
             </div>
           </NDropdown>

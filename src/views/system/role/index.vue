@@ -24,11 +24,11 @@
 <script lang="tsx" setup>
 import { Api } from '@/api/Api'
 import { useHttp } from '@/hooks/useHttp'
-import { DataTableColumns, useDialog } from 'naive-ui'
+import { type DataTableColumns, useDialog } from 'naive-ui'
 import AddModal from './src/AddModal.vue'
 import { NButton } from 'naive-ui'
 import { createNotification } from '@/utils/message'
-import { useTable, BasicTable } from '@/components/Table'
+import { UseTable, BasicTable } from '@/components/Table'
 import { getRoleList } from '@/api'
 const dialog = useDialog()
 type TList = {
@@ -109,7 +109,7 @@ const columns: DataTableColumns<TList> = [
     }
   }
 ]
-const { register, methods } = useTable({
+const { register, methods } = UseTable({
   columns,
   // title: () => 'xxxx',
   api: getRoleList,

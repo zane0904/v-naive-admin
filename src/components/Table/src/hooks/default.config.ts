@@ -1,4 +1,4 @@
-import { BasicTableProps } from '../type/table'
+import { type BasicTableProps } from '../type/table'
 
 const config: Partial<BasicTableProps> = {
   immediate: true,

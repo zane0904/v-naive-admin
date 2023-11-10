@@ -1,7 +1,7 @@
 import { useLogOut } from '@/hooks/useLogin'
 import { logError } from '@/utils/log'
 import { createModal } from '@/utils/message'
-import { DropdownOption } from 'naive-ui'
+import { type DropdownOption } from 'naive-ui'
 
 export const userOptions = [
   {
