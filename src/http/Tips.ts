@@ -1,10 +1,9 @@
 import { AxiosErrorTip, responseErrInfo } from '@/enum/axios'
-import type { RequestOptions } from '@/type/http'
 import { createModal, createMsg, createNotification } from '@/utils/message'
-import type { AxiosError } from 'axios'
+import type { AxiosError, AxiosRequestConfig } from 'axios'
 export const TipMsg = (response: AxiosError) => {
   const strMsg: string = responseErrInfo[response.response!.status]
-  const config: RequestOptions = response.config as RequestOptions
+  const config: AxiosRequestConfig = response.config as AxiosRequestConfig
   const msg = `${response.response!.status} ${strMsg}` || `${response.response!.status}请联系管理员`
   switch (config.requestOptions.errorMessageModal) {
     case AxiosErrorTip.MESSAGE: //message提示

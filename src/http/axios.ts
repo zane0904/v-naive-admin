@@ -1,16 +1,16 @@
-import { axiosAddTime, axiosTimeName, axiosTokenName, RETRY_COUNTCODE } from '@/config'
+import { axiosAddTime, axiosTimeName, axiosTokenName, httpStatus, RETRY_COUNTCODE } from '@/config'
 import { RequestEnum } from '@/enum/axios'
 import { useGo } from '@/hooks/router'
 import { routeStore } from '@stores/modules/routeStore'
 import { userProfileStore } from '@stores/modules/user'
 import type { SetOptional } from '@/type'
-import type { ErrorInfo, RequestOptions, TConversion } from '@/type/http'
+import type { ErrorInfo, TConversion } from '@/type/http'
 import { createNotification } from '@/utils/message'
 import { uuid } from '@/utils/utils'
 import axios, {
-  AxiosError,
+  type AxiosError,
   type AxiosInstance,
-  // type AxiosRequestConfig,
+  type AxiosRequestConfig,
   type AxiosResponse,
   type InternalAxiosRequestConfig
 } from 'axios'
@@ -18,9 +18,8 @@ import { addCancel } from './addCancel'
 import { cancelPending, deletePending } from './cancel'
 import { TipMsg } from './Tips'
 export class VAxios {
-  // private requestOptions: RequestOptions
   private AxiosInstance: AxiosInstance
-  constructor(requestOptions: RequestOptions) {
+  constructor(requestOptions: AxiosRequestConfig) {
     // this.requestOptions = requestOptions
     this.AxiosInstance = axios.create(requestOptions)
     this.interceptors() //this.AxiosInstance
@@ -34,12 +33,13 @@ export class VAxios {
   private initRequestInterceptors() {
     this.AxiosInstance.interceptors.request.use(
       async (request: InternalAxiosRequestConfig) => {
-        // .log('request', request)
-        const { requestOptions } = request as any
+        const { requestOptions } = request
         const { joinTime, withToken, ignoreRequest } = requestOptions
+        // 处理id
         if (!requestOptions.id) {
           requestOptions.id = uuid()
         }
+        // 参数增加时间戳，get...等请求方式缓存
         if (joinTime && axiosAddTime.includes(request.method as RequestEnum)) {
           try {
             Reflect.set(request.params, axiosTimeName, Number(new Date()))
@@ -48,19 +48,25 @@ export class VAxios {
             Reflect.set(request.params, axiosTimeName, Number(new Date()))
           }
         }
+        // 添加token
         if (withToken) {
           Reflect.set(request.headers!, axiosTokenName, userProfileStore().token)
         }
+        // 忽略重复请求
         if (ignoreRequest) {
-          cancelPending(request as RequestOptions)
+          cancelPending(requestOptions.id)
         }
-        addCancel(request as RequestOptions)
+        // 记录当前请求
+        addCancel(request)
+        // setTimeout(() => {
+        //   cancelPending(requestOptions.id!)
+        // }, 0)
         return request
       },
       async (error: AxiosError) => {
         createNotification({
           title: '系统异常',
-          description: error.response!.status as unknown as string,
+          description: String(error.response!.status),
           content: error.message,
           type: 'error'
         })
@@ -72,7 +78,8 @@ export class VAxios {
   private initResponseInterceptors() {
     this.AxiosInstance.interceptors.response.use(
       async (response: AxiosResponse) => {
-        const config: RequestOptions = response.config as any
+        const config = response.config
+        // 当前请求完成，删除请求前暂存的请求
         deletePending(config)
         if (config.requestOptions?.isReturnNativeResponse) {
           //是否需要对原生头处理
@@ -98,98 +105,115 @@ export class VAxios {
       async (error: AxiosError) => {
         /**
          * 1.是否是cancel取消的
-         * 2.判断重试
-         * 3.超时
-         * 4.兜底处理
+         * 2.是否是401
+         * 3.判断重试
+         * 4.超时
+         * 5.兜底处理
          **/
-        // 1、
-        if (error.response?.status === 401) {
-          createNotification({
-            title: '系统异常',
-            description: '401',
-            content: '登录过期，即将重新登陆',
-            type: 'error'
-          })
-          const router = routeStore()
-          await router.reset(async () => {
-            const go = useGo()
-            await go('/login')
-          })
-          return Promise.reject(error)
-        } else if (axios.isCancel(error)) {
-          const err: ErrorInfo = {
-            status: 4004,
+        // console.log(error)
+        const { config, response, code, message } = error
+        const isCancel = axios.isCancel(error)
+        if (!isCancel) {
+          deletePending(config!)
+        }
+        // 取消请求
+        if (code === 'ECONNABORTED' && message.indexOf('timeout') !== -1) {
+          return Promise.reject(await this.#timeout(error))
+        } else if (isCancel) {
+          return Promise.reject({
+            status: httpStatus.cancel,
             statusText: error.message || 'error',
             success: false
-          }
-          //   deletePending(error.config as RequestOptions)
-          return Promise.reject(err)
-        }
-        // 2、
-        const config: RequestOptions = error.config as any
-        const [RETRY_COUNT, RETRY_INTERVAL] = [
-          config.requestOptions.count,
-          config.requestOptions.interval
-        ]
-        if (
+          })
+        } else if (response!.status === 401) {
+          return Promise.reject(this.#returnParams(error)).finally(async () => {
+            createNotification({
+              title: '系统异常',
+              description: `${response!.status}`,
+              content: '登录过期,即将重新登陆',
+              type: 'error'
+            })
+            const router = routeStore()
+            router.reset(async () => {
+              const go = useGo()
+              go('/login')
+            })
+          })
+        } else if (
           config &&
-          RETRY_COUNT &&
+          config.requestOptions?.count &&
           config.requestOptions.openRetry &&
-          error.response &&
-          RETRY_COUNTCODE.includes(error.response.status)
+          response &&
+          RETRY_COUNTCODE.includes(response.status)
         ) {
-          config.requestOptions.retryCount = config.requestOptions.retryCount || 0
-          if (config.requestOptions.retryCount >= RETRY_COUNT) {
-            return Promise.reject(error.response || { message: error.message })
-          }
-          config.requestOptions.retryCount++
-          const backSend = new Promise<void>(resolve => {
-            setTimeout(() => {
-              resolve()
-            }, RETRY_INTERVAL || 1)
-          })
-          return backSend.then(() => {
-            return this.AxiosInstance(config)
-          })
-        }
-        // 3、
-        if (error.code === 'ECONNABORTED' && error.message.indexOf('timeout') !== -1) {
-          //is overtime
-          const ignore: ErrorInfo = {
-            status: 4004,
-            statusText: '请求超时',
-            success: false
-          }
-          // createErrorMsg({ title: '系统异常', content: '请求超时' })
-          createNotification({
-            title: '系统异常',
-            description: error.response!.status as unknown as string,
-            content: '请求超时',
-            type: 'error'
-          })
-          deletePending(config)
-          return Promise.reject(ignore)
-        } else if (error.config) {
+          return Promise.reject(await this.#retry(error))
+        } else if (config) {
           TipMsg(error)
-          const requestOptions: any = error.config
-          const result: ErrorInfo = {
-            status: error.response!.status,
-            statusText: error.response!.statusText || '??',
-            success: false,
-            response: requestOptions.requestOptions.isReturnNativeResponse ? error.response : {}
-          }
-          deletePending(config)
-          return Promise.reject(result)
+          return Promise.reject(this.#returnParams(error))
         }
         return Promise.reject(error)
       }
     )
   }
   /**
+   * 重试
+   * **/
+  #retry(error: AxiosError): Promise<ErrorInfo> {
+    const config = error.config!
+    const [RETRY_COUNT, RETRY_INTERVAL] = [
+      config.requestOptions.count,
+      config.requestOptions.interval
+    ]
+    config.requestOptions.retryCount = config.requestOptions.retryCount || 0
+    if (config.requestOptions.retryCount >= RETRY_COUNT!) {
+      return Promise.resolve(this.#returnParams(error))
+    }
+    config.requestOptions.retryCount++
+    const backSend = new Promise<void>(resolve => {
+      setTimeout(() => {
+        resolve()
+      }, RETRY_INTERVAL || 1)
+    })
+    return backSend.then(async () => {
+      return await this.AxiosInstance(config)
+    })
+  }
+  /**
+   * 超时
+   * **/
+  #timeout(error: AxiosError) {
+    const ignore: ErrorInfo = {
+      status: httpStatus.timeout,
+      statusText: '请求超时',
+      success: false
+    }
+    createNotification({
+      title: '系统异常',
+      description: String(httpStatus.timeout),
+      content: '请求超时',
+      type: 'error'
+    })
+    deletePending(error.config!)
+    return Promise.resolve(ignore)
+  }
+  /**
+   * 处理返回数据
+   * **/
+  #returnParams(error: AxiosError): ErrorInfo {
+    const { response, config } = error
+    return {
+      status: response!.status,
+      statusText: response!.statusText || '??',
+      success: false,
+      ...(config!.requestOptions.isReturnNativeResponse ? { response } : {})
+    }
+  }
+  /**
    * @description 请求主体
    **/
-  require<T = any>(config: SetOptional<RequestOptions, 'requestOptions'>): Promise<T> {
+  require<T = any>(config: SetOptional<AxiosRequestConfig, 'requestOptions'>): Promise<T> {
     return this.AxiosInstance.request({
+      requestOptions: {},
       ...config
     })
   }
@@ -201,7 +225,7 @@ export class VAxios {
   get<T = any, conversion extends boolean = true>(
     url: string,
     params?: Record<string, Object>,
-    config?: RequestOptions
+    config?: AxiosRequestConfig
   ): Promise<TConversion<conversion, T>> {
     return this.require({ url, method: 'get', params, ...config })
   }
@@ -214,7 +238,7 @@ export class VAxios {
   head<T = any, conversion extends boolean = true>(
     url: string,
     params?: Record<string, Object>,
-    config?: RequestOptions
+    config?: AxiosRequestConfig
   ): Promise<TConversion<conversion, T>> {
     return this.require({
       url,
@@ -231,7 +255,7 @@ export class VAxios {
   options<T = any, conversion extends boolean = true>(
     url: string,
     params?: Record<string, Object>,
-    config?: RequestOptions
+    config?: AxiosRequestConfig
   ): Promise<TConversion<conversion, T>> {
     return this.require({
       url,
@@ -248,7 +272,7 @@ export class VAxios {
   delete<T = any, conversion extends boolean = true>(
     url: string,
     params?: Record<string, Object>,
-    config?: RequestOptions
+    config?: AxiosRequestConfig
   ): Promise<TConversion<conversion, T>> {
     return this.require({
       url,
@@ -265,7 +289,7 @@ export class VAxios {
   post<T = any, conversion extends boolean = true>(
     url: string,
     data?: Record<string, any>,
-    config?: RequestOptions
+    config?: AxiosRequestConfig
   ): Promise<TConversion<conversion, T>> {
     return this.require({ url, method: 'post', data, ...config })
   }
@@ -277,7 +301,7 @@ export class VAxios {
   put<T = any, conversion extends boolean = true>(
     url: string,
     data?: Record<string, any>,
-    config?: RequestOptions
+    config?: AxiosRequestConfig
   ): Promise<TConversion<conversion, T>> {
     return this.require({
       url,
@@ -294,7 +318,7 @@ export class VAxios {
   patch<T = any, conversion extends boolean = true>(
     url: string,
     data?: Record<string, any>,
-    config?: RequestOptions
+    config?: AxiosRequestConfig
   ): Promise<TConversion<conversion, T>> {
     return this.require({
       url,
@@ -311,7 +335,7 @@ export class VAxios {
   uploadFile<T = FormData, conversion extends boolean = true>(
     url: string,
     data?: FormData,
-    config?: RequestOptions
+    config?: AxiosRequestConfig
   ): Promise<TConversion<conversion, T>> {
     return this.require({
       url,

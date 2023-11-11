@@ -28,8 +28,9 @@ export const useGo = (_router?: Router) => {
             () => reject(false)
           )
       }
-      if (path === '/login' && !query.redirectPath) {
-        Reflect.set(query, 'redirectPath', router?.currentRoute.value.fullPath)
+      if (path === '/login' && router?.currentRoute.value.fullPath.includes('redirectPath')) {
+        const str = router?.currentRoute.value.fullPath.split('?')[1].split('redirectPath=')[1]
+        Reflect.set(query, 'redirectPath', str)
       }
       push({ path, query })
         .catch(handleError)

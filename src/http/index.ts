@@ -1,9 +1,9 @@
 import { carryToken, RETRY_COUNT, RETRY_INTERVAL, RETRY_OPENRETRY } from '@/config'
 import { AxiosErrorTip, ContentTypeEnum, ignoreTip } from '@/enum/axios'
-import type { RequestOptions } from '@/type/http'
 import { merge } from 'lodash-es'
 import { VAxios } from './axios'
-export const data: RequestOptions = {
+import type { AxiosRequestConfig } from 'axios'
+export const data: AxiosRequestConfig = {
   timeout: 1000 * 10, // 10ms 超时
   baseUrl: '',
   headers: { 'Content-Type': ContentTypeEnum.JSON },
@@ -28,7 +28,7 @@ export const data: RequestOptions = {
     count: RETRY_COUNT,
     // 重试间隔
     interval: RETRY_INTERVAL,
-    // 默认不开启错误重试
+    // 默认开启错误重试
     openRetry: RETRY_OPENRETRY,
     // 当前重试次数
     retryCount: 0,
@@ -36,7 +36,7 @@ export const data: RequestOptions = {
     isConversionRequestResult: true
   }
 }
-const createHttp = (request?: RequestOptions) => {
+const createHttp = (request?: AxiosRequestConfig) => {
   return new VAxios(merge(data, request))
 }
 export const http = createHttp()

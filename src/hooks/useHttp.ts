@@ -1,15 +1,14 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
 import { http } from '@/http'
-import type { RequestCustom, RequestOptions } from '@/type/http'
-import type { Method } from 'axios'
+import type { RequestCustom } from '@/type/http'
+import type { AxiosRequestConfig, Method } from 'axios'
 import { merge } from 'lodash-es'
-type Headers = Pick<RequestOptions, 'headers'>
 interface ISetHeader {
   [key: string]: any
 }
 // eslint-disable-next-line no-unused-vars
-export interface IUseHttp extends Headers {
+export interface IUseHttp extends Pick<AxiosRequestConfig, 'headers'> {
   readonly Api: string
   data?: Record<string, any>
   params?: Record<string, any>
@@ -67,7 +66,9 @@ export const useHttp = function (configProps: IUseHttp) {
   const setProps = (configParams: RequestCustom) => {
     configProps.props = merge(configProps.props, configParams)
   }
-  const setHeaders = (configParams: ISetHeader) =>
-    (configProps.headers = merge(configProps.headers, configParams))
+  const setHeaders = (configParams: ISetHeader) => {
+    configProps.headers = merge(configProps.headers, configParams)
+  }
+
   return { run, loading, err, data, setHeaders, setProps }
 }

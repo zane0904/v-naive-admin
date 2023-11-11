@@ -19,14 +19,6 @@ export enum RequestEnum {
   PATCH = 'patch',
   OPTIONS = 'options'
 }
-export const methodData: Array<RequestEnum> = [
-  RequestEnum.GET,
-  RequestEnum.DELETE,
-  RequestEnum.HEAD,
-  RequestEnum.PATCH,
-  RequestEnum.POST,
-  RequestEnum.PUT
-]
 /**
  * @header:  contentTyp
  */
@@ -47,7 +39,7 @@ export enum AxiosErrorTip {
 /**
  *  如果有重复提示信息
  **/
-export const ignoreTip = '请求重复,请稍后重试'
+export const ignoreTip = '取消请求'
 // 接口异常 状态码提示信息
 export const responseErrInfo: {
   [key: number]: string

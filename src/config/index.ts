@@ -32,7 +32,7 @@ export const noAddTabs = ['redirectPath', 'redirect', '404', 'login']
  * @retryErrorCode:  请求异常时，哪些状态码可以直接重试不需要在配置是否重试重试次数等
  * @ params [401, 404,500]
  **/
-export const RETRY_COUNTCODE: Array<Number> = [401]
+export const RETRY_COUNTCODE: Array<Number> = [401, 404]
 /**
  * @retryErrorCode:  请求异常时，重试次数
  **/
@@ -70,6 +70,20 @@ export const axiosAddTime = [
  * @remarks 自定义token字段
  **/
 export const axiosTokenName = 'X-Access-Token'
+
+/**
+ * @remarks 自定义状态码
+ **/
+export enum httpStatus {
+  /**
+   * 手动取消请求状态码
+   * **/
+  cancel = 4001,
+  /**
+   * 超时状态码
+   * **/
+  timeout = 5001
+}
 /**
  * @remarks 白色变量
  **/
