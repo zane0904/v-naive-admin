@@ -24,7 +24,7 @@ export const PasswordRules: FormRules = {
         if (!value) {
           return new Error('请输入密码')
         } else if (!grade.two.test(value)) {
-          return new Error('密码必须包含：大小写字母，数字，字符($@!%*#&.)')
+          return new Error('密码最少5位,至少一个字母(不区分大小写)和一个数字')
         }
         return true
       },

@@ -1,22 +1,25 @@
-<div align="center"> <a href="https://github.com/vzane0904/v-naive-admin"> <img alt="VNaive" style="height:240px;"  src="./src/assets/svg/logo-icon.svg"> </a> <br> <br>
+<div align="center"> <a href="https://github.com/zane0904/v-naive-admin"> <img alt="VNaive" style="height:240px;"  src="./src/assets/svg/logo-icon.svg"> </a> <br> <br>
 
 <p align="center">
     <a href="https://github.com/vuejs/core">
-        <img src="https://img.shields.io/badge/Vue3.2.31-brightgreen.svg">
+        <img src="https://img.shields.io/badge/Vue-^3.2.31-brightgreen.svg">
+    </a>
+     <a href="https://github.com/vuejs/core">
+        <img src="https://img.shields.io/badge/Vue--router-^4.2.4-brightgreen.svg">
     </a>
     <a href="https://www.naiveui.com/zh-CN/light">
-        <img src="https://img.shields.io/badge/Naive--ui-^2.31.1-brightgreen.svg">
+        <img src="https://img.shields.io/badge/Naive--ui-^2.34.4-brightgreen.svg">
     </a>
         <a href="https://github.com/vuejs/pinia">
-        <img src="https://img.shields.io/badge/Pinia-^2.0.12-brightgreen.svg">
+        <img src="https://img.shields.io/badge/Pinia-^2.1.6-brightgreen.svg">
     </a>
     <a href="https://github.com/vitejs/vite">
-        <img src="https://img.shields.io/badge/Vite-^2.9.15-brightgreen.svg">
+        <img src="https://img.shields.io/badge/Vite-^4.4.9-brightgreen.svg">
     </a>
     <a href="https://github.com/nuysoft/Mock">
         <img src="https://img.shields.io/badge/mockjs-^1.1.0-brightgreen.svg">
     </a>
-  	<a href="https://github.com/vzane0904/v-naive-admin/blob/master/LICENSE">
+  	<a href="https://github.com/zane0904/v-naive-admin/blob/master/LICENSE">
         <img src="https://img.shields.io/badge/license-MIT-brightgreen.svg">
     </a>
 </p>
@@ -31,7 +34,7 @@ V-Naive-Admin 是一个免费开源的中后台模版,使用了最新的`vue3 Vi
 
 ## 安全
 
-[![OSCS Status](https://www.oscs1024.com/platform/badge/vzane0904/v-naive-admin.svg?size=small)](https://old.murphysec.com/dr/ewmhycEhuXRo4rL4mN)
+[![OSCS Status](https://www.oscs1024.com/platform/badge/zane0904/v-naive-admin.svg?size=small)](https://old.murphysec.com/dr/640lKakY4Uug0mBEpt)
 
 我们已接入 [oscs 墨菲安全扫描](https://old.murphysec.com/dr/ewmhycEhuXRo4rL4mN) ，admin 源码中未被扫描出任何风险项，超越 100%的项目，确保人畜无害！大家可以放心使用，当然您如果扔不放心，我们推荐您在使用前 clone admin 源码亲自阅读一番，我们是 100%开源，是否有风险您一看便知.
 
@@ -85,7 +88,7 @@ V-Naive-Admin 是一个免费开源的中后台模版,使用了最新的`vue3 Vi
 
 🔳 Vue-i18n 项目已完成插件配置，未完成变编译
 
-😭 Bug 肯定是少不了的呀
+😭 修复 BUG
 
 🟡 待补充...
 
@@ -93,7 +96,7 @@ V-Naive-Admin 是一个免费开源的中后台模版,使用了最新的`vue3 Vi
 
 在 Gitpod（适用于 GitHub 的免费在线开发环境）中打开项目，并立即开始编码.
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/vzane0904/v-naive-admin)
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/zane0904/v-naive-admin)
 
 # 文档
 
@@ -116,7 +119,7 @@ V-Naive-Admin 是一个免费开源的中后台模版,使用了最新的`vue3 Vi
 - 获取项目代码
 
 ```bash
-git clone https://github.com/vzane0904/v-naive-admin.git
+git clone https://github.com/zane0904/v-naive-admin.git
 ```
 
 - 初始化 git commitizen
@@ -151,11 +154,11 @@ pnpm build
 
 ## 项目地址
 
-- [VNaive-admin](https://github.com/vzane0904/v-naive-admin.git) - 完整版
+- [VNaive-admin](https://github.com/zane0904/v-naive-admin.git) - 完整版
 
 ## 如何贡献
 
-非常欢迎你的加入！[提一个 Issue](https://github.com/vzane0904/v-naive-admin/issues/new) 或者提交一个 Pull Request.
+非常欢迎你的加入！[提一个 Issue](https://github.com/zane0904/v-naive-admin/issues/new) 或者提交一个 Pull Request.
 
 **Pull Request:**
 
@@ -219,7 +222,7 @@ pnpm build
 
 `V-Naive-Admin` 是完全开源免费的项目，在帮助开发者更方便地进行中大型管理系统开发，同时也提供 QQ 交流群使用问题欢迎在群内提问.
 
-- [GitHub discussions](https://github.com/vzane0904/v-naive-admin/discussions)
+- [GitHub discussions](https://github.com/zane0904/v-naive-admin/discussions)
 
 - QQ 群 `暂无`
 
