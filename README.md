@@ -23,7 +23,7 @@
 <h1>V Naive Admin</h1>
 </div>
 
-**中文** | [English](./README.md)
+<!-- **中文** | [English](./README.md) -->
 
 ## 简介
 
